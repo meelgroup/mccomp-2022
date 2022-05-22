@@ -1,0 +1,6 @@
+$TMPDIR Path to the temporary directory.
+--tmpdir=/givenpath Path to the temporary directory.
+--maxrss=X Size (integer) of the max available RAM in GB.
+--maxtmp=X Size (integer) of the max available TMP in GB.
+--timeout=X Runtime limit in seconds.
+--task=X Solver Task X ∈ {mc, wmc, pmc}
