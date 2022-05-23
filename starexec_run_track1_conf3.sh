@@ -11,7 +11,6 @@ cleanfile=$(mktemp)
 preprocessed_cnf_file=$(mktemp)
 echo "c o solfile: $solfile  indfile: $indfile  cleanfile: $cleanfile cleancnffile: $cleancnffile preprocessed_cnf_file: $preprocessed_cnf_file"
 
-timeout_value=$(( STAREXEC_WALLCLOCK_LIMIT ))
 tout_be=210
 
 echo "c o This script is for regular model counting track"
@@ -31,7 +30,7 @@ fi
 echo "c c MULTI will be 2**$multi"
 cache_size=$(( STAREXEC_MAX_MEM/2 ))
 echo "c o Trying to run sharpsat-td, cache_size: ${cache_size} MB"
-./sharpSAT -decot 120 -decow 100 -tmpdir . -cs ${cache_size} -pptoutdiv 10 --ppstr "P" $cleancnffile > $solfile
+./sharpSAT-td -decot 120 -decow 100 -tmpdir . -cs ${cache_size} -pptoutdiv 10 --ppstr "P" $cleancnffile > $solfile
 solved_by_ganak=`grep "^s .*SATISFIABLE" $solfile`
 if [[ $solved_by_ganak == *"SATISFIABLE"* ]]; then
     sed -E "s/^(.)/c o \1/" $solfile

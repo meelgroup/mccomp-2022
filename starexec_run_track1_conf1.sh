@@ -11,7 +11,6 @@ cleanfile=$(mktemp)
 preprocessed_cnf_file=$(mktemp)
 echo "c o solfile: $solfile  indfile: $indfile  cleanfile: $cleanfile cleancnffile: $cleancnffile preprocessed_cnf_file: $preprocessed_cnf_file"
 
-timeout_value=$(( STAREXEC_WALLCLOCK_LIMIT ))
 tout_be=210
 
 echo "c o This script is for regular model counting track"
