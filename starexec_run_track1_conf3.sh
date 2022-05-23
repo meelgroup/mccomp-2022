@@ -30,9 +30,8 @@ else
 fi
 echo "c c MULTI will be 2**$multi"
 cache_size=$(( STAREXEC_MAX_MEM/2 ))
-echo "c o Trying to run Ganak, cache_size: ${cache_size} MB"
-
-./ganak -cs ${cache_size} $cleancnffile > $solfile
+echo "c o Trying to run sharpsat-td, cache_size: ${cache_size} MB"
+./sharpSAT -decot 120 -decow 100 -tmpdir . -cs ${cache_size} -pptoutdiv 10 --ppstr "P" $cleancnffile > $solfile
 solved_by_ganak=`grep "^s .*SATISFIABLE" $solfile`
 if [[ $solved_by_ganak == *"SATISFIABLE"* ]]; then
     sed -E "s/^(.)/c o \1/" $solfile
