@@ -22,21 +22,23 @@ found=`grep "^p cnf" $preprocessed_cnf_file`
 if [[ $found == *"p cnf"* ]]; then
    echo "c o OK, Arjun succeeded"
    grep -v "^c" $preprocessed_cnf_file > $cleancnffile
-   multi=`grep "^c MUST MUTIPLY BY" $preprocessed_cnf_file| awk '{print $5}'`
+   multi=`grep "^c MUST MUTIPLY BY" $preprocessed_cnf_file| sed "s/2\*\*//" | awk '{print $5}'`
 else
    echo "c o WARNING Arjun did NOT succeed"
    grep -v "^c" $file > $cleancnffile
-   multi=1
+   multi=0
 fi
+echo "c c MULTI will be 2**$multi"
 cache_size=$(( STAREXEC_MAX_MEM/2 ))
-echo "c o Trying to run Ganak, cache_size: ${cache_size}"
+echo "c o Trying to run Ganak, cache_size: ${cache_size} MB"
 ./ganak -cs ${cache_size} $cleancnffile > $solfile
 solved_by_ganak=`grep "^s .*SATISFIABLE" $solfile`
 if [[ $solved_by_ganak == *"SATISFIABLE"* ]]; then
     sed -E "s/^(.)/c o \1/" $solfile
     sat=`grep "^s .*SATISFIABLE" $solfile`
     count=`grep "^s .*mc" $solfile | awk '{print $3}'`
-    count=`echo "$count*$multi" | bc -l`
+    export BC_LINE_LENGTH=1000000
+    count=`echo "$count*(2^$multi)" | bc -l`
     log_10_count=`echo "scale=15; l($count)/l(10)" | bc -l `
 
     echo $sat
