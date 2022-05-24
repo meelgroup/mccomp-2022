@@ -28,7 +28,7 @@ else
    multi=0
 fi
 echo "c c MULTI will be 2**$multi"
-cache_size=$(( STAREXEC_MAX_MEM/2 ))
+cache_size=3500
 echo "c o Trying to run sharpsat-td, cache_size: ${cache_size} MB"
 ./sharpSAT-td -decot 120 -decow 100 -tmpdir . -cs ${cache_size} -pptoutdiv 10 --ppstr "P" $cleancnffile | tee $solfile | sed "s/^/c o /"
 solved_by_ganak=`grep "^s .*SATISFIABLE" $solfile`
