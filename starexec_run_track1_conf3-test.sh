@@ -30,10 +30,9 @@ fi
 echo "c c MULTI will be 2**$multi"
 cache_size=$(( STAREXEC_MAX_MEM/2 ))
 echo "c o Trying to run sharpsat-td, cache_size: ${cache_size} MB"
-./sharpSAT-td -decot 10 -decow 100 -tmpdir . -cs ${cache_size} -pptoutdiv 10 --ppstr "P" $cleancnffile > $solfile
+./sharpSAT-td -decot 10 -decow 100 -tmpdir . -cs ${cache_size} -pptoutdiv 10 --ppstr "P" $cleancnffile | tee $solfile | sed "s/^/c o /"
 solved_by_ganak=`grep "^s .*SATISFIABLE" $solfile`
 if [[ $solved_by_ganak == *"SATISFIABLE"* ]]; then
-    sed -E "s/^(.)/c o \1/" $solfile
     sat=`grep "^s .*SATISFIABLE" $solfile`
     count=`grep "^c s exact arb int" $solfile | awk '{print $6}'`
     export BC_LINE_LENGTH=1000000

@@ -16,7 +16,7 @@ tout_be=210
 echo "c o This script is for regular model counting track"
 grep -v "^c" $file > $cleanfile
 echo "c o Running Arjun with timeout: ${tout_be}"
-./doalarm ${tout_be} ./arjun --backbone 1 $cleanfile --elimtofile $preprocessed_cnf_file | sed "s/^/c o/"
+./doalarm ${tout_be} ./arjun --backbone 1 $cleanfile --elimtofile $preprocessed_cnf_file | sed "s/^/c o /"
 found=`grep "^p cnf" $preprocessed_cnf_file`
 if [[ $found == *"p cnf"* ]]; then
    echo "c o OK, Arjun succeeded"
@@ -31,10 +31,9 @@ echo "c c MULTI will be 2**$multi"
 cache_size=$(( STAREXEC_MAX_MEM/2 ))
 echo "c o Trying to run Ganak, cache_size: ${cache_size} MB"
 
-./ganak -cs ${cache_size} $cleancnffile > $solfile
+./ganak -cs ${cache_size} $cleancnffile | tee $solfile | sed "s/^/c o /"
 solved_by_ganak=`grep "^s .*SATISFIABLE" $solfile`
 if [[ $solved_by_ganak == *"SATISFIABLE"* ]]; then
-    sed -E "s/^(.)/c o \1/" $solfile
     sat=`grep "^s .*SATISFIABLE" $solfile`
     count=`grep "^s .*mc" $solfile | awk '{print $3}'`
     export BC_LINE_LENGTH=1000000
