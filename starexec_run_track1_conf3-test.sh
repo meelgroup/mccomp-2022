@@ -16,7 +16,7 @@ tout_be=210
 echo "c o This script is for regular model counting track"
 grep -v "^c" $file > $cleanfile
 echo "c o Running Arjun with timeout: ${tout_be}"
-./doalarm ${tout_be} ./arjun --backbone 1 $cleanfile --elimtofile $preprocessed_cnf_file | sed "s/^/c o/"
+stdbuf -oL -eL ./doalarm ${tout_be} ./arjun --backbone 1 $cleanfile --elimtofile $preprocessed_cnf_file | sed "s/^/c o/"
 found=`grep "^p cnf" $preprocessed_cnf_file`
 if [[ $found == *"p cnf"* ]]; then
    echo "c o OK, Arjun succeeded"
@@ -30,7 +30,7 @@ fi
 echo "c c MULTI will be 2**$multi"
 cache_size=3500
 echo "c o Trying to run sharpsat-td, cache_size: ${cache_size} MB"
-./sharpSAT-td -decot 10 -decow 100 -tmpdir . -cs ${cache_size} -pptoutdiv 10 --ppstr "P" $cleancnffile | tee $solfile | sed "s/^/c o /"
+stdbuf -oL -eL  ./sharpSAT-td -decot 10 -decow 100 -tmpdir . -cs ${cache_size} -pptoutdiv 10 --ppstr "P" $cleancnffile | tee $solfile | sed "s/^/c o /"
 solved_by_ganak=`grep "^s .*SATISFIABLE" $solfile`
 if [[ $solved_by_ganak == *"SATISFIABLE"* ]]; then
     sat=`grep "^s .*SATISFIABLE" $solfile`
