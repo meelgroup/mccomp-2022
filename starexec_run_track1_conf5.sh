@@ -6,7 +6,7 @@ echo "c o found header: $mc"
 
 solfile=$(mktemp)
 echo "c o This script is for regular model counting"
-stdbuf -oL -eL ./approxmc --epsilon 0.01 $1 | tee $solfile | sed "s/^/c o /"
+stdbuf -oL -eL ./approxmc --epsilon 0.1 $1 | tee $solfile | sed "s/^/c o /"
 solved_by_approxmc=`grep "^s .*SATISFIABLE" $solfile`
 if [[ $solved_by_approxmc == *"SATISFIABLE"* ]]; then
     sat=`grep "^s .*SATISFIABLE" $solfile`
