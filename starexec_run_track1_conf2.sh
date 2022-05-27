@@ -11,7 +11,12 @@ solved_by_approxmc=`grep "^s .*SATISFIABLE" $solfile`
 if [[ $solved_by_approxmc == *"SATISFIABLE"* ]]; then
     sat=`grep "^s .*SATISFIABLE" $solfile`
     count=`grep "^s .*mc" $solfile | awk '{print $3}'`
-    log_10_count=`echo "scale=15; l($count)/l(10)" | bc -l `
+    export BC_LINE_LENGTH=1000000
+    if [[ $count -eq "0" ]]; then
+        log_10_count="-inf"
+    else
+        log_10_count=`echo "scale=15; l($count)/l(10)" | bc -l `
+    fi
 
     echo $sat
     echo "c s type mc"

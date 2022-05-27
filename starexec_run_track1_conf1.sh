@@ -38,7 +38,11 @@ if [[ $solved_by_ganak == *"SATISFIABLE"* ]]; then
     count=`grep "^s .*mc" $solfile | awk '{print $3}'`
     export BC_LINE_LENGTH=1000000
     count=`echo "$count*(2^$multi)" | bc -l`
-    log_10_count=`echo "scale=15; l($count)/l(10)" | bc -l `
+    if [[ $count -eq "0" ]]; then
+        log_10_count="-inf"
+    else
+        log_10_count=`echo "scale=15; l($count)/l(10)" | bc -l `
+    fi
 
     echo $sat
     echo "c s type mc"
