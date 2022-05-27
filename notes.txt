@@ -4,3 +4,17 @@ $TMPDIR Path to the temporary directory.
 --maxtmp=X Size (integer) of the max available TMP in GB.
 --timeout=X Runtime limit in seconds.
 --task=X Solver Task X ∈ {mc, wmc, pmc}
+
+
+3 -- starexec_run_track1_conf4.sh
+=========
+SharpSAT-TD only.
+
+xzgrep "c s exact arb int" *.out.xz | wc -l
+340
+
+
+2 -- starexec_run_track1_conf3.sh
+=========
+arjun + SharpSAT-TD
+
