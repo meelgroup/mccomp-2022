@@ -18,3 +18,83 @@ xzgrep "c s exact arb int" *.out.xz | wc -l
 =========
 arjun + SharpSAT-TD
 
+OOOPS -- UNSAT
+soos@tiresias:out-mcc-8347096.wlm01-2$ xzless track1_004.cnf.gz.out.xz
+
+track1_004.cnf.gz.out.xz:sharpSAT-td: /home/soos/sharpsat-td/src/preprocessor/instance.cpp:33: void sspp::Instance::AddClause(std::vector<int>): Assertion `!clause.empty()' failed.
+
+-> fixed.
+
+track1_017.cnf.gz.out.xz:arjun: /home/soos/cryptominisat/src/solver.cpp:2280: CMSat::lbool CMSat::Solver::simplify_problem(bool, const string&): Assertion `okay()' failed.
+
+
+soos@tiresias:out-mcc-8347096.wlm01-2$ xzgrep "Arjun did NOT succeed" *.out.xz | wc -l
+113
+
+
+NOT backbone.... track1_040.mcc2020.cnf.gz.out.xz
+
+NOT backbone: track1_122.cnf.gz.out -- oracle
+
+NOT backbone: track1_055.mcc2020.cnf.gz.out.xz
+
+
+NOT backbone it seems:
+
+soos@tiresias:out-mcc-8347096.wlm01-2$ xzgrep "Arjun did NOT succeed" *.out.xz | sed "s/:c.*//" | xargs xzgrep "c oc o SAT"
+track1_018.cnf.gz.out.xz:c oc o SAT
+track1_020.cnf.gz.out.xz:c oc o SAT
+track1_024.cnf.gz.out.xz:c oc o SAT
+track1_040.mcc2020.cnf.gz.out.xz:c oc o SAT
+track1_043.cnf.gz.out.xz:c oc o SAT
+track1_050.cnf.gz.out.xz:c oc o SAT
+track1_055.mcc2020.cnf.gz.out.xz:c oc o SAT
+track1_062.mcc2020.cnf.gz.out.xz:c oc o SAT
+track1_073.mcc2020.cnf.gz.out.xz:c oc o SAT
+track1_076.mcc2020.cnf.gz.out.xz:c oc o SAT
+track1_077.cnf.gz.out.xz:c oc o SAT
+track1_080.cnf.gz.out.xz:c oc o SAT
+track1_082.mcc2020.cnf.gz.out.xz:c oc o SAT
+track1_088.mcc2020.cnf.gz.out.xz:c oc o SAT
+track1_091.cnf.gz.out.xz:c oc o SAT
+track1_094.cnf.gz.out.xz:c oc o SAT
+track1_099.mcc2020.cnf.gz.out.xz:c oc o SAT
+track1_101.cnf.gz.out.xz:c oc o SAT
+track1_101.mcc2020.cnf.gz.out.xz:c oc o SAT
+track1_109.cnf.gz.out.xz:c oc o SAT
+track1_109.mcc2020.cnf.gz.out.xz:c oc o SAT
+track1_110.cnf.gz.out.xz:c oc o SAT
+track1_112.mcc2020.cnf.gz.out.xz:c oc o SAT
+track1_113.cnf.gz.out.xz:c oc o SAT
+track1_114.cnf.gz.out.xz:c oc o SAT
+track1_126.mcc2020.cnf.gz.out.xz:c oc o SAT
+track1_133.mcc2020.cnf.gz.out.xz:c oc o SAT
+track1_138.mcc2020.cnf.gz.out.xz:c oc o SAT
+track1_139.mcc2020.cnf.gz.out.xz:c oc o SAT
+track1_141.cnf.gz.out.xz:c oc o SAT
+track1_142.mcc2020.cnf.gz.out.xz:c oc o SAT
+track1_144.mcc2020.cnf.gz.out.xz:c oc o SAT
+track1_149.mcc2020.cnf.gz.out.xz:c oc o SAT
+track1_150.mcc2020.cnf.gz.out.xz:c oc o SAT
+track1_153.mcc2020.cnf.gz.out.xz:c oc o SAT
+track1_157.cnf.gz.out.xz:c oc o SAT
+track1_170.cnf.gz.out.xz:c oc o SAT
+track1_172.cnf.gz.out.xz:c oc o SAT
+track1_172.mcc2020.cnf.gz.out.xz:c oc o SAT
+track1_173.mcc2020.cnf.gz.out.xz:c oc o SAT
+track1_174.cnf.gz.out.xz:c oc o SAT
+track1_182.mcc2020.cnf.gz.out.xz:c oc o SAT
+track1_185.cnf.gz.out.xz:c oc o SAT
+track1_186.mcc2020.cnf.gz.out.xz:c oc o SAT
+track1_187.cnf.gz.out.xz:c oc o SAT
+track1_187.mcc2020.cnf.gz.out.xz:c oc o SAT
+track1_189.cnf.gz.out.xz:c oc o SAT
+track1_192.cnf.gz.out.xz:c oc o SAT
+track1_194.mcc2020.cnf.gz.out.xz:c oc o SAT
+track1_198.mcc2020.cnf.gz.out.xz:c oc o SAT
+track1_199.mcc2020.cnf.gz.out.xz:c oc o SAT
+
+
+interesting: track1_088.mcc2020.cnf
+
+WOW -- track1_186.mcc2020 this is BAAAAD -- single Solve() call takes WAY too much time, timeouts
