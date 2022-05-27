@@ -16,7 +16,7 @@ tout_be=210
 echo "c o This script is for regular model counting track"
 grep -v "^c" $file > $cleanfile
 echo "c o Running Arjun with timeout: ${tout_be}"
-./doalarm ${tout_be} ./arjun --backbone 1 $cleanfile --elimtofile $preprocessed_cnf_file | sed "s/^/c o/"
+./doalarm ${tout_be} ./arjun --backbone 1 $cleanfile --elimtofile $preprocessed_cnf_file | sed "s/^/c o /"
 found=`grep "^p cnf" $preprocessed_cnf_file`
 if [[ $found == *"p cnf"* ]]; then
    echo "c o OK, Arjun succeeded"
