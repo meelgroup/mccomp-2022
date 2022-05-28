@@ -36,7 +36,7 @@ solved_by_ganak=`grep "^s .*SATISFIABLE" $solfile`
 if [[ $solved_by_ganak == *"SATISFIABLE"* ]]; then
     sat=`grep "^s .*SATISFIABLE" $solfile`
     count=`grep "^s .*mc" $solfile | awk '{print $3}'`
-    export BC_LINE_LENGTH=1000000
+    export BC_LINE_LENGTH=99999000000
     count=`echo "$count*(2^$multi)" | bc -l`
     if [[ $count -eq "0" ]]; then
         log_10_count="-inf"
