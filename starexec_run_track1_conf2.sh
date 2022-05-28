@@ -9,7 +9,9 @@ solfile=$(mktemp)
 cleanfile=$(mktemp)
 cache_size=25000
 tout_ganak=1200
+
 grep -v "^c" $file > $cleanfile
+
 ./doalarm ${tout_ganak} ./ganak -cs ${cache_size} -t ${tout_ganak} $cleanfile > $solfile
 solved_by_ganak=`grep "^s .*SATISFIABLE" $solfile`
 if [[ $solved_by_ganak == *"SATISFIABLE"* ]]; then

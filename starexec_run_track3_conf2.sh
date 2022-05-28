@@ -5,13 +5,12 @@ mc=`grep "^c t " $file`
 echo "c o found header: $mc"
 echo "c o This script is for projected  model counting"
 
-tout_ganak=1200
-cache_size=25000
-
 solfile=$(mktemp)
 indfile=$(mktemp)
 cleanfile2=$(mktemp)
 cleanfile=$(mktemp)
+cache_size=25000
+tout_ganak=1200
 
 grep "c p show" $file | sed -E "s/c p show (.*)/c ind \1 0/" > $indfile
 grep -v "^c" $file > $cleanfile2
