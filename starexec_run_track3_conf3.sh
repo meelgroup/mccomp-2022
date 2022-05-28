@@ -42,8 +42,8 @@ if [[ $solved_by_ganak == *"SATISFIABLE"* ]]; then
     if [[ $count -eq "0" ]]; then
         log_10_count="-inf"
     else
-        log_10_count=`echo "scale=15; l($count)/l(10)" | bc -l `
         count=`echo "$count*(2^$multi)" | bc -l`
+        log_10_count=`echo "scale=15; l($count)/l(10)" | bc -l `
     fi
 
     echo $sat
