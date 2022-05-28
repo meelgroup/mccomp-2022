@@ -4,12 +4,13 @@ file=$1
 mc=`grep "^c t " $file`
 echo "c o found header: $mc"
 
+solfile=$(mktemp)
 indfile=$(mktemp)
 cleanfile=$(mktemp)
 preprocessed_cnf_file=$(mktemp)
 cleanfile2=$(mktemp)
 tout_be=210
-echo "c o solfile: $solfile  indfile: $indfile  cleanfile: $cleanfile cleancnffile: $cleancnffile preprocessed_cnf_file: $preprocessed_cnf_file"
+echo "c o solfile: $solfile  indfile: $indfile  cleanfile: $cleanfile preprocessed_cnf_file: $preprocessed_cnf_file"
 echo "c o This script is for projected model counting track"
 
 

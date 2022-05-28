@@ -8,11 +8,10 @@ solfile=$(mktemp)
 indfile=$(mktemp)
 cleanfile=$(mktemp)
 preprocessed_cnf_file=$(mktemp)
-echo "c o solfile: $solfile  indfile: $indfile  cleanfile: $cleanfile preprocessed_cnf_file: $preprocessed_cnf_file"
-
 tout_be=210
-
+echo "c o solfile: $solfile  indfile: $indfile  cleanfile: $cleanfile preprocessed_cnf_file: $preprocessed_cnf_file"
 echo "c o This script is for regular model counting track"
+
 grep -v "^c" $file > $cleanfile
 echo "c o Running Arjun with timeout: ${tout_be}"
 ./doalarm ${tout_be} ./arjun --recomp 1 --backbone 1 $cleanfile --elimtofile $preprocessed_cnf_file | sed "s/^/c o /"
