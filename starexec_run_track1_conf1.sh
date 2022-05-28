@@ -28,7 +28,7 @@ else
    multi=0
 fi
 echo "c c MULTI will be 2**$multi"
-cache_size=3500
+cache_size=25000
 echo "c o Trying to run Ganak, cache_size: ${cache_size} MB"
 
 stdbuf -oL -eL ./ganak -cs ${cache_size} $cleancnffile | tee $solfile | sed "s/^/c o /"
