@@ -36,11 +36,11 @@ if [[ $solved_by_ganak == *"SATISFIABLE"* ]]; then
     sat=`grep "^s .*SATISFIABLE" $solfile`
     count=`grep "^c s exact arb int" $solfile | awk '{print $6}'`
     export BC_LINE_LENGTH=99999000000
-    count=`echo "$count*(2^$multi)" | bc -l`
     if [[ $count -eq "0" ]]; then
         log_10_count="-inf"
     else
         log_10_count=`echo "scale=15; l($count)/l(10)" | bc -l `
+        count=`echo "$count*(2^$multi)" | bc -l`
     fi
 
     echo $sat

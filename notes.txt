@@ -98,3 +98,27 @@ track1_199.mcc2020.cnf.gz.out.xz:c oc o SAT
 interesting: track1_088.mcc2020.cnf
 
 WOW -- track1_186.mcc2020 this is BAAAAD -- single Solve() call takes WAY too much time, timeouts
+
+-----------------
+
+Things that arjun+sharpsat-td could not solve: out-mcc-8358390.wlm01-2
+but out-mcc-8358390.wlm01-3 (sharpsat-td) solved:
+
++track1_022.cnf.gz.out.xz
++track1_028.mcc2020.cnf.gz.out.xz
++track1_036.mcc2020.cnf.gz.out.xz -- shell line issue???
++track1_048.mcc2020.cnf.gz.out.xz
++track1_055.cnf.gz.out.xz
++track1_061.cnf.gz.out.xz
++track1_064.mcc2020.cnf.gz.out.xz
++track1_069.cnf.gz.out.xz
++track1_073.cnf.gz.out.xz
++track1_100.mcc2020.cnf.gz.out.xz
++track1_116.mcc2020.cnf.gz.out.xz
++track1_150.mcc2020.cnf.gz.out.xz
++track1_167.mcc2020.cnf.gz.out.xz
++track1_190.mcc2020.cnf.gz.out.xz
+
+
+
+
