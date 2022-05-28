@@ -29,7 +29,7 @@ fi
 echo "c c MULTI will be 2**$multi"
 cache_size=25000
 echo "c o Trying to run sharpsat-td, cache_size: ${cache_size} MB"
-stdbuf -oL -eL ./sharpSAT-td -decot 120 -decow 100 -tmpdir . -cs ${cache_size} -pptoutdiv 10 --ppstr "P" $cleanfile | tee $solfile | sed "s/^/c o /"
+./sharpSAT-td -decot 120 -decow 100 -tmpdir . -cs ${cache_size} -pptoutdiv 10 --ppstr "P" $cleanfile | tee $solfile | sed "s/^/c o /"
 solved_by_ganak=`grep "^s .*SATISFIABLE" $solfile`
 if [[ $solved_by_ganak == *"SATISFIABLE"* ]]; then
     sat=`grep "^s .*SATISFIABLE" $solfile`
