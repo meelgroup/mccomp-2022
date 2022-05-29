@@ -32,7 +32,7 @@ echo "c c MULTI will be 2**$multi"
 cache_size=8000
 
 echo "c o Trying to run ganak, cache_size: ${cache_size} MB"
-./ganak $preprocessed_cnf_file | tee $solfile | sed "s/^/c o /"
+./ganak -cs ${cache_size} $preprocessed_cnf_file | tee $solfile | sed "s/^/c o /"
 solved_by_ganak=`grep "^s .*SATISFIABLE" $solfile`
 if [[ $solved_by_ganak == *"SATISFIABLE"* ]]; then
     sat=`grep "^s .*SATISFIABLE" $solfile`
