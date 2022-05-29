@@ -36,9 +36,9 @@ echo "c o Trying to run ganak, cache_size: ${cache_size} MB"
 solved_by_ganak=`grep "^s .*SATISFIABLE" $solfile`
 if [[ $solved_by_ganak == *"SATISFIABLE"* ]]; then
     sat=`grep "^s .*SATISFIABLE" $solfile`
-    count=`grep "^s mc" $solfile | awk '{print $3}'`
+    count=`grep "^s pmc" $solfile | awk '{print $3}'`
     export BC_LINE_LENGTH=99999000000
-    if [[ $count -eq "0" ]]; then
+    if [[ "$count" == "0" ]]; then
         log_10_count="-inf"
     else
         count=`echo "$count*(2^$multi)" | bc -l`
@@ -46,7 +46,7 @@ if [[ $solved_by_ganak == *"SATISFIABLE"* ]]; then
     fi
 
     echo $sat
-    echo "c s type mc"
+    echo "c s type pmc"
     echo "c s log10-estimate $log_10_count"
     echo "c s exact arb int $count"
     exit 0
