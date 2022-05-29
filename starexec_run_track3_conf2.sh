@@ -29,7 +29,7 @@ else
    multi=0
 fi
 echo "c c MULTI will be 2**$multi"
-cache_size=25000
+cache_size=8000
 
 echo "c o Trying to run ganak, cache_size: ${cache_size} MB"
 ./ganak $preprocessed_cnf_file | tee $solfile | sed "s/^/c o /"
