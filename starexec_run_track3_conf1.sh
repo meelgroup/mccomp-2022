@@ -1,8 +1,6 @@
 #!/bin/bash
 
 file=$1
-mc=`grep "^c t " $file`
-echo "c o found header: $mc"
 echo "c o This script is for projected  model counting"
 
 solfile=$(mktemp)
