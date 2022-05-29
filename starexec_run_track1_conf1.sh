@@ -44,7 +44,7 @@ if [[ $solved_by_ganak == *"SATISFIABLE"* ]]; then
     echo "c s exact arb int $count"
     exit 0
 else
-    ./approxmc --ignore 1 --epsilon 0.9 $1 | tee $solfile | sed "s/^/c o /"
+    ./approxmc --ignore 1 --epsilon 0.9 $file | tee $solfile | sed "s/^/c o /"
     solved_by_approxmc=`grep "^s .*SATISFIABLE" $solfile`
     if [[ $solved_by_approxmc == *"SATISFIABLE"* ]]; then
         sat=`grep "^s .*SATISFIABLE" $solfile`
