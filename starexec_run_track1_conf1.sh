@@ -5,8 +5,10 @@ echo "c o Regular track"
 
 solfile=$(mktemp)
 cleanfile=$(mktemp)
+preprocessed_cnf_file=$(mktemp)
 cache_size=8000
 tout_ganak=1200
+tout_be=210
 
 grep -v "^c" $file > $cleanfile
 
