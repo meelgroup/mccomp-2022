@@ -8,7 +8,7 @@ cleanfile=$(mktemp)
 preprocessed_cnf_file=$(mktemp)
 cache_size=8000
 tout_ganak=1200
-tout_be=210
+tout_be=280
 
 grep -v "^c" $file > $cleanfile
 

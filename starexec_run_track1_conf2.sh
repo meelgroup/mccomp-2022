@@ -8,7 +8,7 @@ solfile=$(mktemp)
 indfile=$(mktemp)
 cleanfile=$(mktemp)
 preprocessed_cnf_file=$(mktemp)
-tout_be=210
+tout_be=280
 echo "c o solfile: $solfile  indfile: $indfile  cleanfile: $cleanfile preprocessed_cnf_file: $preprocessed_cnf_file"
 echo "c o This script is for regular model counting track"
 
